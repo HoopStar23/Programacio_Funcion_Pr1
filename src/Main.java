@@ -74,8 +74,7 @@ public class Main {
     }
 
     public static double multiplicar(double a,double b){
-        double resultado = a*b;
-        return resultado;
+        return a*b;
     }
 
     public static void ejercicio1(){
@@ -141,8 +140,7 @@ public class Main {
     }
 
     public static double millasKilometros(double a){
-        double km = a*1.60934;
-        return km;
+        return a*1.60934;
     }
 
     public static void ejercicio5(){
@@ -154,10 +152,8 @@ public class Main {
     }
 
     public static double iva(double a){
-        double total;
         final double iva = 21;
-        total = a + ((a*iva)/100);
-        return total;
+        return a + ((a*iva)/100);
     }
 
     public static void ejercicio6(){
@@ -165,18 +161,16 @@ public class Main {
         for (int i = 1; i <= 5; i++) {
             System.out.println("A continuacion introduce el precio del producto " + (i));
             precio = validaInt();
-            System.out.println("El prodcuto " + (i) + " cuesta con 21% IVA " + iva(precio));
+            System.out.println("El prodcuto " + (i) + " cuesta con 21% IVA " + iva(precio) + " euros");
         }
     }
 
     public static double perimetro(double a, double b){
-        double pemimetro = (a*2)+(b*2);
-        return  pemimetro;
+        return (a*2)+(b*2);
     }
 
     public static double area (double a, double b){
-        double area = a*b;
-        return area;
+        return a*b;
     }
 
     public static void ejercicio7(){
@@ -185,7 +179,7 @@ public class Main {
         System.out.println("Ahora introduce el lado del rectangulo");
         double lado = validaDouble();
 
-        System.out.println("Con los datos introducidos tiene un area de: " + area(ancho,lado) + " y su perimetro es de: " + perimetro(ancho, lado));
+        System.out.println("Con los datos introducidos tienes un area de: " + area(ancho,lado) + " y su perimetro es de: " + perimetro(ancho, lado));
     }
 
 
@@ -284,11 +278,9 @@ public class Main {
 
     public  static int[] tablaMult(int a){
         int array [] = new int[10];
-        int num = 1;
 
         for (int i = 0; i < array.length; i++) {
-            array[i] = a*num;
-            num++;
+            array[i] = a*(i+1);
         }
         return array;
     }
@@ -304,6 +296,7 @@ public class Main {
     public static double kmMillas(double a){
         return a*0.621371;
     }
+
     public static void ejercicio12(){
         System.out.println("Introduce un valor de km para darte el valor en millas");
         double km = validaDouble();
@@ -336,26 +329,33 @@ public class Main {
         System.out.println("El descuento de este producto es un: " + descuento(precioN, precioD) + " porciento");
     }
 
-    public static void crearPiramide(int a, int b){
+    public static String crearPiramide(int a, String b){
         int contador = 1;
+        String cadena = "";
         for (int i = 1; i <= a; i++) {
             for (int j = 0; j < (a-contador); j++) {
-                System.out.print(" ");
+                cadena += " ";
             }
             for (int j = 0; j < 2*i-1; j++) {
-                System.out.print(b);
+                cadena += b;
             }
-            System.out.println("");
+            cadena += "\n";
             contador++;
         }
+        return cadena;
     }
-    public static void ejercicio14(){// LO HE HECHO FUNCIONAR CON INT, TENGO QUE INVESTIGAR CON STRINGS
-        System.out.println("Cantidad de la piradmide");
-        int piramide = validaInt();
-        System.out.println("Contenido dontreo la piramide");
-        int contenido = validaInt();
 
-        crearPiramide(piramide, contenido);
+    public static void ejercicio14(){
+        System.out.println("Cantidad de la piramide");
+        //5\n
+        int piramide = validaInt(); //5
+        //\n
+        scanner.nextLine();
+        //
+        System.out.println("Contenido dentro la piramide");
+        String contenido = scanner.nextLine();
+
+        System.out.println(crearPiramide(piramide, contenido));
     }
 
     public static int total(int [] a){
@@ -370,13 +370,12 @@ public class Main {
     public static double media( int [] a){
         return total(a)/100;
     }
+
     public static void ejercicio15(){
         int array[] = new int[100];
-        int num = 1;
 
         for (int i = 0; i < array.length; i++) {
-            array[i] = num;
-            num++;
+            array[i] = (i+1);
         }
 
         System.out.println("Total: " + total(array));
